@@ -1,16 +1,15 @@
-import React, { useContext } from 'react'
-import logoImage from "/namoCart.png"
+import React, { useContext, useState } from 'react';
+import logoImage from "/namoCart.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AuthContext } from "../context/AuthContext";
+import "../styles/navbarCSS.css";
 
 const Navbar = () => {
     const navigate = useNavigate();
+    const [isOpen, setIsOpen] = useState(false);
 
     const { user, logout } = useContext(AuthContext);
-    const auth = useContext(AuthContext);
-
-    // console.log("Auth =", user.name);
 
     const cartItems = useSelector(
         (state) => state.cart?.cartItems || []
@@ -18,140 +17,71 @@ const Navbar = () => {
 
     const handleLogout = () => {
         logout();
+        setIsOpen(false);
         navigate("/login");
     };
 
-    const linkStyle = {
-        color: "#fff",
-        textDecoration: "none",
-        fontSize: "17px",
-        fontWeight: "500",
+    const closeMenu = () => {
+        setIsOpen(false);
     };
 
-
     return (
-        <>
-            <div>
-                <div style={{overflow: scroll}}>
-                    <nav
-                        style={{
-                            background: "#09090b",
-                            color: "white",
-                            padding: "15px 40px",
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "center",
-                            position: "sticky",
-                            top: "0",
-                            zIndex: "1000",
-                            borderBottom: "1px solid rgba(255,255,255,0.08)",
-                        }}
-                    >
-                        {/* Logo */}
-                        <Link
-                            to="/"
-                        >
-                            <img src={logoImage} alt="NamoCart" style={{
-                                height: "60px",
-                                borderRadius: "50px"
-                            }} />
-                        </Link>
+        <nav className="navbar-container">
+            {/* Logo */}
+            <Link to="/" className="navbar-logo" onClick={closeMenu}>
+                <img src={logoImage} alt="NamoCart" />
+            </Link>
 
-                        {/* Search */}
-                        <input
-                            type="text"
-                            placeholder="Search Products..."
-                            style={{
-                                width: "300px",
-                                padding: "10px 15px",
-                                borderRadius: "30px",
-                                border: "none",
-                                outline: "none",
-                                fontSize: "15px",
-                            }}
-                        />
+            {/* Hamburger Mobile Toggle Button */}
+            <button
+                className="hamburger-btn"
+                onClick={() => setIsOpen(!isOpen)}
+                aria-label="Toggle navigation menu"
+            >
+                {isOpen ? '✕' : '☰'}
+            </button>
 
-                        {/* Menu */}
-                        <div
-                            style={{
-                                display: "flex",
-                                gap: "25px",
-                                alignItems: "center",
-                            }}
-                        >
-                            <Link style={linkStyle} to="/">
-                                Home
+            {/* Nav Menu */}
+            <div className={`navbar-menu ${isOpen ? 'open' : ''}`}>
+                <Link className="nav-link" to="/" onClick={closeMenu}>
+                    Home
+                </Link>
+
+                <Link className="nav-link" to="/shop" onClick={closeMenu}>
+                    Shop
+                </Link>
+
+                <Link className="nav-link" to="/about" onClick={closeMenu}>
+                    About
+                </Link>
+
+                <Link className="cart-link" to="/cart" onClick={closeMenu}>
+                    🛒 Cart <span className="cart-badge">{cartItems.length}</span>
+                </Link>
+
+                {user ? (
+                    <>
+                        {user.role === 'admin' && (
+                            <Link className="nav-link" style={{ color: '#f97316' }} to="/admin/dashboard" onClick={closeMenu}>
+                                Admin Dashboard
                             </Link>
+                        )}
+                        <span className="user-greeting">
+                            <Link to="/profile" onClick={closeMenu}>Hi, {user?.name}</Link>
+                        </span>
 
-                            <Link style={linkStyle} to="/shop">
-                                Shop
-                            </Link>
-
-                            <Link style={linkStyle} to="/about">
-                                About
-                            </Link>
-
-                            <Link style={linkStyle} to="/cart">
-                                🛒({cartItems.length})
-                            </Link>
-
-                            {user ? (
-                                <>
-                                    {user.role === 'admin' && (
-                                        <Link style={{...linkStyle, color: '#f97316'}} to="/admin/dashboard">
-                                            Admin Dashboard
-                                        </Link>
-                                    )}
-                                    <span
-                                        style={{
-                                            color: "#FFD600",
-                                            fontWeight: "600",
-                                        }}
-                                    >
-                                        <Link to = "/profile" style={{color: "inherit", textDecoration: "none"}}>Hi, {user?.name}</Link>
-                                       
-                                    </span>
-
-                                    <button
-                                        onClick={handleLogout} 
-                                        style={{
-                                            background: "linear-gradient(to top right, #FFD600, #FF3CAC)",
-                                            color: "#fff",
-                                            padding: "10px 18px",
-                                            borderRadius: "25px",
-                                            textDecoration: "none",
-                                            fontWeight: "600",
-                                            boxShadow: "0 4px 12px rgba(255, 60, 172, 0.3)",
-                                        }} 
-                                    >
-                                        Logout
-                                    </button>
-                                </>
-                            ) : (
-                                <Link
-                                    to="/login"
-                                    style={{
-                                        background: "linear-gradient(to top right, #FFD600, #FF3CAC)",
-                                        color: "#fff",
-                                        padding: "10px 18px",
-                                        borderRadius: "25px",
-                                        textDecoration: "none",
-                                        fontWeight: "600",
-                                        boxShadow: "0 4px 12px rgba(255, 60, 172, 0.3)",
-                                    }}
-                                >
-                                    Login
-                                </Link>
-                            )}
-                        </div>
-                    </nav>
-
-                </div>
-
+                        <button onClick={handleLogout} className="btn-auth">
+                            Logout
+                        </button>
+                    </>
+                ) : (
+                    <Link to="/login" className="btn-auth" onClick={closeMenu}>
+                        Login
+                    </Link>
+                )}
             </div>
+        </nav>
+    );
+};
 
-        </>
-    )
-}
-
-export default Navbar
+export default Navbar;
