@@ -146,13 +146,7 @@ const Shop = () => {
       ) : filteredProducts.length === 0 ? (
         <h2 style={{ textAlign: "center" }}>No Products Found</h2>
       ) : (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))",
-            gap: "25px",
-          }}
-        >
+        <div className="product-grid">
           {filteredProducts.map((product) => (
             <ProductCards key={product._id} product={product} />
           ))}
