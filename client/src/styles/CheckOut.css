@@ -1,0 +1,146 @@
+/* Main Container */
+.checkout-container {
+    min-height: 100vh;
+    background: #09090b;
+    color: white;
+    padding: 40px 20px;
+  }
+  
+  .checkout-container h2 {
+    text-align: center;
+    margin: 0 auto 35px;
+    font-size: 34px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #FFD700 0%, #FF007F 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: table;
+    letter-spacing: -0.5px;
+    filter: drop-shadow(0px 4px 16px rgba(255, 215, 0, 0.25));
+  }
+  
+  /* Content */
+  .checkout-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Form */
+  .shipping-form {
+    width: 100%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 35px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 25px rgba(255, 0, 128, 0.15);
+  }
+  
+  .shipping-form h3 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #ffd400;
+  }
+  
+  /* Inputs */
+  .shipping-form input {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    background: #18181b;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+    box-sizing: border-box;
+  }
+  
+  .shipping-form input::placeholder {
+    color: #9ca3af;
+  }
+  
+  .shipping-form input:focus {
+    border-color: #ff0080;
+    box-shadow: 0 0 12px rgba(255, 0, 128, 0.35);
+  }
+  
+  /* Summary */
+  .checkout-summry {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+  }
+  
+  .checkout-summry h4 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ffd400;
+  }
+  
+  /* Button */
+  .btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #ff0080, #ffd400);
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 0, 128, 0.35);
+  }
+  
+  .btn:active {
+    transform: scale(0.98);
+  }
+  
+  /* Responsive */
+  
+  @media (max-width:768px) {
+  
+    .checkout-container {
+      padding: 20px 15px;
+    }
+  
+    .shipping-form {
+      padding: 25px;
+    }
+  
+    .checkout-container h2 {
+      font-size: 28px;
+    }
+  
+    .checkout-summry h4 {
+      font-size: 20px;
+    }
+  
+  }
+  
+  @media (max-width:480px) {
+  
+    .shipping-form {
+      padding: 20px;
+    }
+  
+    .shipping-form input {
+      font-size: 15px;
+    }
+  
+    .btn {
+      font-size: 16px;
+    }
+  
+  }

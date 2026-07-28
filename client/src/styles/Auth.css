@@ -1,0 +1,112 @@
+.auth-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.auth-form{
+    background: #18181b;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid  rgba(255,255,255,0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-form::before{
+    content: '';
+    position:absolute;
+    top: 0;
+    left:-50%;
+    width: 450px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #f97316, transparent);
+    animation: shimmer 3s infinite linear;
+}
+.btn{
+    width: 100%;
+    height: 48px;              /* Input ke barabar height */
+    padding: 0 16px;
+    border: none;
+    border-radius: 10px;       /* Input ke barabar radius */
+    background: linear-gradient(135deg, #ff007f, #7b2cbf);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.btn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255,0,127,0.35);
+}
+
+
+@keyframes shimmer {
+    0%{transform:translateX(-50%);}
+    100%{transform: translateX(50%);}
+}
+.auth-form h2{
+    text-align: center;
+    margin: 0 auto 10px;
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #FFD700 0%, #FF007F 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: table;
+    letter-spacing: -0.5px;
+}
+
+
+.auth-form input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #3f3f46;
+    border-radius: 10px;
+
+    background: transparent;   
+    color: #ffffff;
+
+    outline: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.auth-form input::placeholder {
+    color: #a1a1aa;
+}
+
+.auth-form input:focus {
+    border: 1px solid #f97316;
+    box-shadow: 0 0 10px rgba(249,115,22,0.4);
+    background: transparent;
+    color: white;
+}
+
+.auth-form p{
+    text-align: center;
+    margin-top: 15px;
+    color: #a1a1aa;
+}
+
+.auth-form a{
+    color: #f97316;
+    font-weight: 600;
+}
+
+.auth-form a :hover{
+    text-decoration: underline;
+}

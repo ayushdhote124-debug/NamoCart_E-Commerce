@@ -1,0 +1,40 @@
+/* .navbar{
+    background-color: rgba(9,9,11,0,8);
+} */
+
+
+.navbar-link Link {
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+.navbar-link Link:hover {
+    color: #B33A6B;
+  }
+  
+ .navbar-link Link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #FFD700, #FF4DA6);
+    transition: width 0.3s ease;
+  }
+  
+.navbar-link Link:hover::after {
+    width: 100%;
+  }
+  
+ .navbar-link Link.active {
+    color: #B33A6B;
+  }
+  
+ .navbar-link Link.active::after {
+    width: 100%;
+  }
