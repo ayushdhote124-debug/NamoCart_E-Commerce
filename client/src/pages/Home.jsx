@@ -58,7 +58,7 @@ const Home = () => {
       <div style={{ marginTop: '80px', marginBottom: '40px' }}>
         <h2 style={{ textAlign: 'center', marginBottom: '40px', fontSize: '2.5rem' }}>Featured Products</h2>
         {loading ? (
-          <div style={{ textAlign: 'center', color: '#a1a1aa' }}>Loading........</div>
+          <div style={{ textAlign: 'center', color: 'var(--text-secondary)' }}>Loading........</div>
         ) : (
           <div className='product-grid'>
             {
