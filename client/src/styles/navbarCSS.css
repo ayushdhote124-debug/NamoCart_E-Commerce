@@ -1,6 +1,8 @@
 .navbar-container {
-    background: #09090b;
-    color: white;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    color: var(--text-primary);
     padding: 12px 30px;
     display: flex;
     justify-content: space-between;
@@ -8,7 +10,21 @@
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.theme-toggle-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+    background: rgba(128, 128, 128, 0.2);
 }
 
 .navbar-logo {
@@ -29,7 +45,7 @@
 }
 
 .nav-link {
-    color: #fff;
+    color: var(--text-primary);
     text-decoration: none;
     font-size: 16px;
     font-weight: 500;
@@ -43,7 +59,7 @@
 .cart-link {
     display: flex;
     align-items: center;
-    color: white;
+    color: var(--text-primary);
     text-decoration: none;
     font-size: 1.1rem;
     font-weight: 500;
@@ -93,7 +109,7 @@
     display: none;
     background: transparent;
     border: none;
-    color: white;
+    color: var(--text-primary);
     font-size: 1.8rem;
     cursor: pointer;
     padding: 4px;
@@ -115,14 +131,14 @@
         top: 100%;
         left: 0;
         right: 0;
-        background: rgba(9, 9, 11, 0.98);
+        background: var(--bg-primary);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
         flex-direction: column;
         align-items: center;
         gap: 16px;
         padding: 20px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid var(--glass-border);
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
         display: none;
     }

@@ -4,18 +4,16 @@ const Disclaimer = () => {
   return (
     <div
       style={{
-        backgroundColor: "#09090b",
         minHeight: "100vh",
         padding: "60px 20px",
-        color: "#ffffff",
-        fontFamily: "Arial, sans-serif",
+        fontFamily: "'Poppins', sans-serif",
       }}
     >
       <div
         style={{
           maxWidth: "1000px",
           margin: "0 auto",
-          backgroundColor: "#18181b",
+          backgroundColor: "var(--glass-bg)",
           padding: "40px",
           borderRadius: "15px",
           border: "1px solid rgba(255,255,255,0.08)",
@@ -44,7 +42,7 @@ const Disclaimer = () => {
         <p
           style={{
             textAlign: "center",
-            color: "#b3b3b3",
+            color: "var(--text-secondary)",
             fontSize: "17px",
             marginBottom: "40px",
           }}
@@ -65,7 +63,7 @@ const Disclaimer = () => {
 
           <p
             style={{
-              color: "#d1d5db",
+              color: "var(--text-secondary)",
               lineHeight: "1.8",
               fontSize: "16px",
             }}
@@ -85,7 +83,7 @@ const Disclaimer = () => {
 
           <p
             style={{
-              color: "#d1d5db",
+              color: "var(--text-secondary)",
               lineHeight: "1.8",
             }}
           >
@@ -103,7 +101,7 @@ const Disclaimer = () => {
 
           <p
             style={{
-              color: "#d1d5db",
+              color: "var(--text-secondary)",
               lineHeight: "1.8",
             }}
           >
@@ -121,7 +119,7 @@ const Disclaimer = () => {
 
           <p
             style={{
-              color: "#d1d5db",
+              color: "var(--text-secondary)",
               lineHeight: "1.8",
             }}
           >
@@ -139,7 +137,7 @@ const Disclaimer = () => {
 
           <p
             style={{
-              color: "#d1d5db",
+              color: "var(--text-secondary)",
               lineHeight: "1.8",
             }}
           >
@@ -157,7 +155,7 @@ const Disclaimer = () => {
 
           <p
             style={{
-              color: "#d1d5db",
+              color: "var(--text-secondary)",
               lineHeight: "1.8",
             }}
           >
@@ -174,7 +172,7 @@ const Disclaimer = () => {
             textAlign: "center",
             borderRadius: "10px",
             background: "linear-gradient(45deg, #FFD93D, #FF3CAC)",
-            color: "#111",
+            color: "var(--text-primary)",
             fontWeight: "bold",
             fontSize: "18px",
           }}

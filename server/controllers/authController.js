@@ -1,64 +1,54 @@
-
-import { userModel } from "../model/user.js"
-import bcrypt from "bcryptjs"
+import { userModel } from "../model/user.js";
+import bcrypt from "bcryptjs";
 import sendEmail from "../utils/sendEmail.js";
-import genrateToken from "../utils/genrateToken.js"
+import genrateToken from "../utils/genrateToken.js";
 import createError from "http-errors";
 
+export const registeruser = async (req, res, next) => {
+  try {
+    const { name, email, password, role } = req.body;
 
-export const registeruser = async (req, res,next) => {
-    
-    try {
-
-        const { name, email, password,role } = req.body;
-        if(!name || !email || !password ){
-            return next(createError(400,"Missing Fileds - one of thr Required Field Is Empty"))
-
-        }
-        const existingUser = await userModel.findOne({ email });
-        if (existingUser) {
-           return next(createError(400,"User Already Exiest....!"))
-        }
-       
-        const hashedPassword = bcrypt.hashSync(password,10)
-
-        const user = await userModel.create({
-            name, 
-            email,
-            password: hashedPassword,
-            role: role|| "user"
-            });
-        if (user) {
-            const token = genrateToken(user._id)
-            
-            const otp = Math.floor(100000 + Math.random() * 900000).toString();
-            const message = `
-            Welcome to namocart, ${name}
-            Your OTP for namoCart Regidtration is :${otp} Please enter this code on the screen to verify your account.`
-
-            await sendEmail(email, "Welcome to namoCart - Your OTP for regisstration", message);
-            
-            console.log(token)
-            res.status(201).json({
-                name:user.name,
-                _id : user._id,
-                email : user.email,
-                role : user.role,
-                token : token,
-            });
-        } else {
-            res.status(400).json({
-                message: "Invalid user Data"
-            })
-        }
-    } catch (error) {
-        console.error(error);
-    
-        res.status(500).json({
-            message: error.message
-        });
+    if (!name || !email || !password) {
+      return next(createError(400, "Missing Fields - All fields are required"));
     }
-}
+
+    const existingUser = await userModel.findOne({ email });
+    if (existingUser) {
+      return next(createError(400, "User Already Exists!"));
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const user = await userModel.create({
+      name,
+      email,
+      password: hashedPassword,
+      role: role || "user"
+    });
+
+    const token = genrateToken(user._id);
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+    // Isolate email errors so they don't break the HTTP cycle
+    try {
+      const message = `Welcome to namocart, ${name}\nYour OTP for registration is: ${otp}`;
+      await sendEmail(email, "Welcome to namoCart - Your OTP", message);
+    } catch (emailErr) {
+      console.error("Warning: Failed to send OTP email:", emailErr.message);
+    }
+
+    return res.status(201).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      token: token,
+    });
+  } catch (error) {
+    console.error("Register Error:", error);
+    next(error);
+  }
+};
 
 export const loginUser = async (req, res) => {
     const { email, password } = req.body;

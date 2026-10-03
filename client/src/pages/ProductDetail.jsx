@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import { addToCart } from '../redux/cartSlice';
 
 const ProductDetail = () => {
@@ -9,6 +9,7 @@ const ProductDetail = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -37,14 +38,27 @@ const ProductDetail = () => {
       alert('sussesfully added to your Cart....!');
     }
   }
+  const handleBuyNow = () => {
+    if (product) {
+      dispatch(addToCart({
+        _id: product._id,
+        name: product.name,
+        price: product.price,
+        imageUrl: product.imageUrl,
+        qty: 1
+      }));
+      navigate("/checkout");
+    }
+  }
+
   if (loading) return <div style={{ textAlign: 'center', margin: '100px', color: '#f97316' }}>Loading Product.......</div>;
   if (!product) return <div style={{ textAlign: 'center', margin: '100px', color: '#ef4444' }}>Product Not Found</div>
   return (
     <>
       <div className='product-detail-wrapper' style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
 
-        <div style={{ color: '#a1a1aa', marginBottom: '20px', fontSize: '0.95rem' }}>
-          <Link to="/" style={{ color: "#f97316" }} >Home</Link> /  <Link to="/shop" style={{ color: "#f97316" }} >Shop</Link> / {product.category} / <span style={{ color: '#fff' }}>{product.name}</span>
+        <div style={{ color: 'var(--text-secondary)', marginBottom: '20px', fontSize: '0.95rem' }}>
+          <Link to="/" style={{ color: "#f97316" }} >Home</Link> /  <Link to="/shop" style={{ color: "#f97316" }} >Shop</Link> / {product.category} / <span style={{ color: 'var(--text-primary)' }}>{product.name}</span>
         </div>
 
         <div className='product-Detail' style={{
@@ -76,15 +90,16 @@ const ProductDetail = () => {
               </p>
             </div>
 
-            <div style={{ margin: "25px" }}>
-              <h4 style={{ color: '#fff', marginBottom: '10px' }}>Product Description</h4>
-              <p style={{ color: '#a1a1aa', lineHeight: '1.8' }}>{product.description}</p>
+            <div style={{ margin: "25px 0" }}>
+              <h4 style={{ color: 'var(--text-primary)', marginBottom: '10px' }}>Product Description</h4>
+              <p style={{ color: 'var(--text-secondary)', lineHeight: '1.8' }}>{product.description}</p>
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-              <button onClick={handleAddToCart} className='btn' style={{ flexGrow: '1', padding: '18px', fontSize: '1.2rem' }}>Add to Shipping Cart</button>
+              <button onClick={handleAddToCart} className='btn' style={{ flexGrow: '1', padding: '18px', fontSize: '1.2rem', background: 'transparent', border: '2px solid var(--glass-border)', color: 'var(--text-primary)' }}>Add to Cart</button>
+              <button onClick={handleBuyNow} className='btn' style={{ flexGrow: '1', padding: '18px', fontSize: '1.2rem' }}>Buy Now</button>
             </div>
-            <p>{product.stock > 0 ? `In Stock(${product.stock} units available)` : `Temporarily Out of Stock`}</p>
+            <p style={{ color: 'var(--text-secondary)', marginTop: '15px' }}>{product.stock > 0 ? `In Stock (${product.stock} units available)` : `Temporarily Out of Stock`}</p>
 
           </div>
 

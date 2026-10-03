@@ -6,16 +6,18 @@
 }
 
 .auth-form{
-    background: #18181b;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
     width: 100%;
     max-width: 420px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    border: 1px solid  rgba(255,255,255,0.05);
+    border: 1px solid var(--glass-border);
     position: relative;
     overflow: hidden;
 }
@@ -30,24 +32,12 @@
     background: linear-gradient(90deg, transparent, #f97316, transparent);
     animation: shimmer 3s infinite linear;
 }
-.btn{
+.auth-form .btn {
     width: 100%;
-    height: 48px;              /* Input ke barabar height */
-    padding: 0 16px;
-    border: none;
-    border-radius: 10px;       /* Input ke barabar radius */
-    background: linear-gradient(135deg, #ff007f, #7b2cbf);
-    color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
-}
-
-.btn:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(255,0,127,0.35);
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -73,11 +63,11 @@
 .auth-form input {
     width: 100%;
     padding: 14px 16px;
-    border: 1px solid #3f3f46;
+    border: 1px solid var(--glass-border);
     border-radius: 10px;
 
-    background: transparent;   
-    color: #ffffff;
+    background: var(--input-bg, transparent);   
+    color: var(--text-primary);
 
     outline: none;
     font-size: 16px;
@@ -86,20 +76,20 @@
 }
 
 .auth-form input::placeholder {
-    color: #a1a1aa;
+    color: var(--text-secondary);
 }
 
 .auth-form input:focus {
     border: 1px solid #f97316;
     box-shadow: 0 0 10px rgba(249,115,22,0.4);
     background: transparent;
-    color: white;
+    color: var(--text-primary);
 }
 
 .auth-form p{
     text-align: center;
     margin-top: 15px;
-    color: #a1a1aa;
+    color: var(--text-secondary);
 }
 
 .auth-form a{

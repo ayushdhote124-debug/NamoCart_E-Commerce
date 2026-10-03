@@ -1,8 +1,6 @@
 /* Main Container */
 .checkout-container {
     min-height: 100vh;
-    background: #09090b;
-    color: white;
     padding: 40px 20px;
   }
   
@@ -32,79 +30,66 @@
   .shipping-form {
     width: 100%;
     max-width: 600px;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--glass-bg);
     padding: 35px;
     border-radius: 18px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 0 25px rgba(255, 0, 128, 0.15);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   }
   
   .shipping-form h3 {
     text-align: center;
     margin-bottom: 25px;
-    color: #ffd400;
+    color: var(--text-primary);
   }
   
   /* Inputs */
-  .shipping-form input {
+  .shipping-form input[type="text"] {
     width: 100%;
     padding: 14px 16px;
     margin-bottom: 18px;
     border-radius: 10px;
-    border: 1px solid #333;
-    background: #18181b;
-    color: white;
+    border: 1px solid var(--glass-border);
+    background: transparent;
+    color: var(--text-primary);
     font-size: 16px;
     outline: none;
     transition: 0.3s;
     box-sizing: border-box;
   }
   
-  .shipping-form input::placeholder {
-    color: #9ca3af;
+  .shipping-form input[type="text"]::placeholder {
+    color: var(--text-secondary);
   }
   
-  .shipping-form input:focus {
-    border-color: #ff0080;
-    box-shadow: 0 0 12px rgba(255, 0, 128, 0.35);
+  .shipping-form input[type="text"]:focus {
+    border-color: #ff007f;
+    box-shadow: 0 0 12px rgba(255, 0, 127, 0.35);
   }
   
   /* Summary */
   .checkout-summry {
     margin-top: 25px;
     padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid var(--glass-border);
     text-align: center;
   }
   
   .checkout-summry h4 {
     font-size: 24px;
     margin-bottom: 20px;
-    color: #ffd400;
+    color: var(--text-primary);
   }
   
   /* Button */
-  .btn {
+  .shipping-form .btn {
     width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 10px;
-    background: linear-gradient(45deg, #ff0080, #ffd400);
-    color: white;
-    font-size: 18px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s ease;
-  }
-  
-  .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 0, 128, 0.35);
-  }
-  
-  .btn:active {
-    transform: scale(0.98);
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   /* Responsive */
@@ -135,7 +120,7 @@
       padding: 20px;
     }
   
-    .shipping-form input {
+    .shipping-form input[type="text"] {
       font-size: 15px;
     }
   

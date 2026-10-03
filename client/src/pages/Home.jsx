@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ProductCards from '../components/ProductCards.jsx';
+import { Link } from 'react-router-dom';
+import '../styles/Home.css';
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -20,33 +22,43 @@ const Home = () => {
     fetchProducts();
 
   }, []);
+
   return (
-    <>
-      <div className='home-content'>
-        <div className='hero-baner' style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <h1 style={{ textAlign: 'center', marginBottom: '15px' }}>
-            <span
-              style={{
-                fontSize: '3rem',
-                fontWeight: '800',
-                background: 'linear-gradient(90deg, #FFD700 0%, #FF007F 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                display: 'inline-block',
-                letterSpacing: '-0.5px',
-                filter: 'drop-shadow(0px 4px 16px rgba(255, 215, 0, 0.25))',
-              }}
-            >
-              Welcome to NamoCart
-            </span>
+    <div className='home-content'>
+      
+      {/* Modern Hero Section */}
+      <section className='hero-section'>
+        <div className='hero-content'>
+          <h1 className='hero-title'>
+            Elevate Your <br />
+            <span>Lifestyle</span>
           </h1>
-          <p style={{ color: '#a1a1aa', fontSize: '1.2rem', marginBottom: '10px' }}>Everything You Need, One Cart.</p>
-          <p style={{ color: '#a1a1aa', maxWidth: '600px', margin: '0 auto' }}>Explore trending products, exclusive deals, and amazing offers. Experience fast, secure, and hassle-free online shopping with NamoCart.</p>
+          <p className='hero-subtitle'>
+            Experience fast, secure, and hassle-free online shopping. Discover trending products, exclusive deals, and amazing offers tailored just for you.
+          </p>
+          <div className='hero-buttons'>
+            <Link to="/shop" className="btn">Shop Now</Link>
+            <Link to="/about" className="btn-outline">Learn More</Link>
+          </div>
         </div>
-        <h2 style={{ textAlign: 'center', marginBottom: '30px' }}>Featured Products</h2>
+
+        <div className='hero-graphic'>
+          <div className='shape shape-1'></div>
+          <div className='shape shape-2'></div>
+          <div className='shape shape-3'></div>
+          <div className='hero-glass-card'>
+             <div className='mock-image'>🛍️</div>
+             <div className='mock-text-1'></div>
+             <div className='mock-text-2'></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Products */}
+      <div style={{ marginTop: '80px', marginBottom: '40px' }}>
+        <h2 style={{ textAlign: 'center', marginBottom: '40px', fontSize: '2.5rem' }}>Featured Products</h2>
         {loading ? (
-          <div>Loading........</div>
+          <div style={{ textAlign: 'center', color: '#a1a1aa' }}>Loading........</div>
         ) : (
           <div className='product-grid'>
             {
@@ -54,15 +66,12 @@ const Home = () => {
                 return <ProductCards key={product._id} product={product} />
               })
             }
-
           </div>
-        )
-        }
+        )}
       </div>
 
-    </>
+    </div>
   )
 }
 
-export default Home
-
+export default Home;

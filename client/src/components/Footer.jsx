@@ -43,9 +43,9 @@ const Footer = () => {
 
             <footer
                 style={{
-                    background: "#09090b",
-                    color: "#fff",
-                    borderTop: "1px solid rgba(255,255,255,0.08)",
+                    background: "var(--bg-primary)",
+                    color: "var(--text-primary)",
+                    borderTop: "1px solid var(--glass-border)",
                     padding: "50px 20px 20px",
                     marginTop: "auto",
                 }}
@@ -80,7 +80,7 @@ const Footer = () => {
 
                         <p
                             style={{
-                                color: "#d4d4d8",
+                                color: "var(--text-secondary)",
                                 lineHeight: "1.8",
                                 fontSize: "15px",
                             }}
@@ -92,7 +92,7 @@ const Footer = () => {
 
                     {/* Quick Links */}
                     <div>
-                        <h3 style={{ color: "#f4f4f5", marginBottom: "15px" }}>
+                        <h3 style={{ color: "var(--text-primary)", marginBottom: "15px" }}>
                             Quick Links
                         </h3>
 
@@ -104,16 +104,16 @@ const Footer = () => {
                                 lineHeight: "2",
                             }}
                         >
-                            <li><a href="/" style={{ color: "#a1a1aa", textDecoration: "none" }}>Home</a></li>
-                            <li><a href="/about" style={{ color: "#a1a1aa", textDecoration: "none" }}>About Us</a></li>
-                            <li><a href="/disclaimer" style={{ color: "#a1a1aa", textDecoration: "none" }}>Disclaimer</a></li>
-                            <li><a href="/returnpolicy" style={{ color: "#a1a1aa", textDecoration: "none" }}>Return Policy</a></li>
+                            <li><a href="/" style={{ color: "var(--text-secondary)", textDecoration: "none" }}>Home</a></li>
+                            <li><a href="/about" style={{ color: "var(--text-secondary)", textDecoration: "none" }}>About Us</a></li>
+                            <li><a href="/disclaimer" style={{ color: "var(--text-secondary)", textDecoration: "none" }}>Disclaimer</a></li>
+                            <li><a href="/returnpolicy" style={{ color: "var(--text-secondary)", textDecoration: "none" }}>Return Policy</a></li>
                         </ul>
                     </div>
 
                     {/* Customer Service */}
                     <div>
-                        <h3 style={{ color: "#f4f4f5", marginBottom: "15px" }}>
+                        <h3 style={{ color: "var(--text-primary)", marginBottom: "15px" }}>
                             Customer Service
                         </h3>
 
@@ -122,7 +122,7 @@ const Footer = () => {
                                 listStyle: "none",
                                 padding: 0,
                                 margin: 0,
-                                color: "#d4d4d8",
+                                color: "var(--text-secondary)",
                                 lineHeight: "2",
                             }}
                         >
@@ -135,17 +135,17 @@ const Footer = () => {
 
                     {/* Contact */}
                     <div>
-                        <h3 style={{ color: "#f4f4f5", marginBottom: "15px" }}>
+                        <h3 style={{ color: "var(--text-primary)", marginBottom: "15px" }}>
                             Contact Us
                         </h3>
 
-                        <p style={{ color: "#d4d4d8", lineHeight: "2" }}>
+                        <p style={{ color: "var(--text-secondary)", lineHeight: "2" }}>
                             📍 Indore, MadhyaPradesh
                         </p>
-                        <p style={{ color: "#d4d4d8", lineHeight: "2" }}>
+                        <p style={{ color: "var(--text-secondary)", lineHeight: "2" }}>
                             📧 support@namocart.com
                         </p>
-                        <p style={{ color: "#d4d4d8", lineHeight: "2" }}>
+                        <p style={{ color: "var(--text-secondary)", lineHeight: "2" }}>
                             📞 +91 98765 43210
                         </p>
                     </div>
@@ -155,9 +155,9 @@ const Footer = () => {
                     style={{
                         marginTop: "40px",
                         paddingTop: "20px",
-                        borderTop: "1px solid rgba(255,255,255,0.08)",
+                        borderTop: "1px solid var(--glass-border)",
                         textAlign: "center",
-                        color: "#71717a",
+                        color: "var(--text-secondary)",
                         fontSize: "14px",
                     }}
                 >

@@ -13,6 +13,7 @@ const CheckOut = () => {
   const [address, setAddress] = useState({
     fullName : '',street:'',city:'',postalCode:'',country:''
   });
+  const [paymentMethod, setPaymentMethod] = useState('Online');
   const totalPrice =cartItems.reduce((acc,item)=>acc + item.price * item.qty,0)
   const formattedItems = cartItems.map(item => ({
     productId: item._id,
@@ -117,6 +118,29 @@ const CheckOut = () => {
     }
    };
 
+   const handleCOD = async ()=>{
+    const saveOrderRes = await fetch('/api/orders',{
+      method:'POST',
+      headers:{
+        'content-Type':'application/json',
+        Authorization:`Bearer ${user.token}`
+      },
+      body: JSON.stringify({
+        items: formattedItems,
+        totalAmount : totalPrice,
+        address,
+        paymentId: 'COD_'+ Date.now()
+      })
+    });
+    if(saveOrderRes.ok){
+      dispatch(clearCart());
+      navigate('/shop');
+      alert("Order placed successfully with Cash on Delivery!");
+    } else {
+      alert("Order saving failed for COD.");
+    }
+   };
+
    const handleSubmit = (e)=>{
     e.preventDefault();
     if(!user){
@@ -124,7 +148,12 @@ const CheckOut = () => {
       navigate('/login');
       return;
     }
-    handelePayment();
+    
+    if (paymentMethod === 'COD') {
+      handleCOD();
+    } else {
+      handelePayment();
+    }
    }
   return (
     <>
@@ -142,6 +171,20 @@ const CheckOut = () => {
           <input type="text" placeholder='Postal Code' required value={address.postalCode} onChange={(e)=> setAddress({...address,postalCode: e.target.value})} />
 
           <input type="text" placeholder='Country' required value={address.country} onChange={(e)=> setAddress({...address,country: e.target.value})} />
+
+          <div style={{ margin: "20px 0" }}>
+            <h4 style={{ color: "var(--text-primary)", marginBottom: "12px", fontSize: "1.1rem" }}>Payment Method</h4>
+            <div style={{ display: "flex", gap: "25px" }}>
+              <label style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer", color: "var(--text-secondary)", fontSize: "1rem" }}>
+                <input type="radio" value="Online" checked={paymentMethod === 'Online'} onChange={() => setPaymentMethod('Online')} />
+                Online Payment
+              </label>
+              <label style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer", color: "var(--text-secondary)", fontSize: "1rem" }}>
+                <input type="radio" value="COD" checked={paymentMethod === 'COD'} onChange={() => setPaymentMethod('COD')} />
+                Cash on Delivery
+              </label>
+            </div>
+          </div>
 
           <div className='checkout-summry'>
             <h4>Total to Pay : {totalPrice.toFixed(2)}</h4>

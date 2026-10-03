@@ -21,7 +21,8 @@ export const createOrder = async (req,res)=>{
             });
             // console.log(order)
             await order.save();
-            const message = `Dear ${req.user.name},\n\n Thank you for your order! Your order has been siccessfully created with the following details:\n\nOrder ID : ${order._id}\nTotal Amount : ${totalAmount}\nShipping Address : ${address} \n\nWe will notify you once your order is shipped.\n\nBest regards,\nNamoCart Team`;
+            const addressStr = `${address.street}, ${address.city}, ${address.postalCode}, ${address.country}`;
+            const message = `Dear ${req.user.name},\n\n Thank you for your order! Your order has been successfully created with the following details:\n\nOrder ID : ${order._id}\nTotal Amount : ${totalAmount}\nShipping Address : ${addressStr}\n\nWe will notify you once your order is shipped.\n\nBest regards,\nNamoCart Team`;
 
             try {
                 await sendEmail(req.user.email, 'order created', message);

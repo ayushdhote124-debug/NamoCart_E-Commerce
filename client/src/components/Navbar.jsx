@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import logoImage from "/namoCart.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -8,12 +8,33 @@ import "../styles/navbarCSS.css";
 const Navbar = () => {
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(true);
 
     const { user, logout } = useContext(AuthContext);
 
     const cartItems = useSelector(
         (state) => state.cart?.cartItems || []
     );
+
+    useEffect(() => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            setIsDarkMode(false);
+            document.body.classList.add('light-mode');
+        }
+    }, []);
+
+    const toggleTheme = () => {
+        if (isDarkMode) {
+            document.body.classList.add('light-mode');
+            localStorage.setItem('theme', 'light');
+            setIsDarkMode(false);
+        } else {
+            document.body.classList.remove('light-mode');
+            localStorage.setItem('theme', 'dark');
+            setIsDarkMode(true);
+        }
+    };
 
     const handleLogout = () => {
         logout();
@@ -43,6 +64,9 @@ const Navbar = () => {
 
             {/* Nav Menu */}
             <div className={`navbar-menu ${isOpen ? 'open' : ''}`}>
+                <button onClick={toggleTheme} className="theme-toggle-btn" aria-label="Toggle theme">
+                    {isDarkMode ? '☀️' : '🌙'}
+                </button>
                 <Link className="nav-link" to="/" onClick={closeMenu}>
                     Home
                 </Link>

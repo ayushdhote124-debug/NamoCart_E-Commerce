@@ -61,7 +61,7 @@ const Shop = () => {
         maxWidth: "1400px",
         margin: "auto",
         padding: "40px 20px",
-        color: "white",
+        color: "var(--text-primary)",
       }}
     >
       <h1 className="shop-title-container">
@@ -73,7 +73,7 @@ const Shop = () => {
       <p
         style={{
           textAlign: "center",
-          color: "#b3b3b3",
+          color: "var(--text-secondary)",
           marginBottom: "35px",
         }}
       >
@@ -99,10 +99,10 @@ const Shop = () => {
             minWidth: "250px",
             padding: "14px",
             borderRadius: "10px",
-            border: "1px solid #444",
+            border: "1px solid var(--glass-border)",
             outline: "none",
-            background: "#18181b",
-            color: "white",
+            background: "var(--input-bg, transparent)",
+            color: "var(--text-primary)",
           }}
         />
 
@@ -112,9 +112,9 @@ const Shop = () => {
           style={{
             padding: "14px",
             borderRadius: "10px",
-            background: "#18181b",
-            color: "white",
-            border: "1px solid #444",
+            background: "var(--input-bg, transparent)",
+            color: "var(--text-primary)",
+            border: "1px solid var(--glass-border)",
           }}
         >
           <option value="All">All Categories</option>
@@ -130,9 +130,9 @@ const Shop = () => {
           style={{
             padding: "14px",
             borderRadius: "10px",
-            background: "#18181b",
-            color: "white",
-            border: "1px solid #444",
+            background: "var(--input-bg, transparent)",
+            color: "var(--text-primary)",
+            border: "1px solid var(--glass-border)",
           }}
         >
           <option value="">Sort By</option>

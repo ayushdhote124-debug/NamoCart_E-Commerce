@@ -6,11 +6,9 @@ const About = () => {
     <>
     <div
       style={{
-        backgroundColor: "#09090b",
         minHeight: "100vh",
-        color: "#fff",
         padding: "60px 20px",
-        fontFamily: "Arial, sans-serif",
+        fontFamily: "'Poppins', sans-serif",
       }}
     >
       <div
@@ -41,7 +39,7 @@ const About = () => {
         <p
           style={{
             fontSize: "18px",
-            color: "#cfcfcf",
+            color: "var(--text-secondary)",
             lineHeight: "1.8",
             maxWidth: "900px",
             margin: "0 auto 50px",
@@ -65,7 +63,7 @@ const About = () => {
         >
           <div
             style={{
-              background: "#18181b",
+              background: "var(--glass-bg)",
               padding: "25px",
               borderRadius: "15px",
               width: "300px",
@@ -75,7 +73,7 @@ const About = () => {
             <h2 style={{ color: "#FFD93D", marginBottom: "15px" }}>
               🎯 Our Mission
             </h2>
-            <p style={{ color: "#d4d4d4", lineHeight: "1.6" }}>
+            <p style={{ color: "var(--text-secondary)", lineHeight: "1.6" }}>
               To provide customers with high-quality products, affordable
               pricing, and a seamless shopping experience through innovation and
               excellent service.
@@ -84,7 +82,7 @@ const About = () => {
 
           <div
             style={{
-              background: "#18181b",
+              background: "var(--glass-bg)",
               padding: "25px",
               borderRadius: "15px",
               width: "300px",
@@ -94,7 +92,7 @@ const About = () => {
             <h2 style={{ color: "#FF3CAC", marginBottom: "15px" }}>
               🚚 Fast Delivery
             </h2>
-            <p style={{ color: "#d4d4d4", lineHeight: "1.6" }}>
+            <p style={{ color: "var(--text-secondary)", lineHeight: "1.6" }}>
               We ensure quick and reliable delivery with real-time order
               tracking so your favorite products reach your doorstep safely and
               on time.
@@ -103,7 +101,7 @@ const About = () => {
 
           <div
             style={{
-              background: "#18181b",
+              background: "var(--glass-bg)",
               padding: "25px",
               borderRadius: "15px",
               width: "300px",
@@ -113,7 +111,7 @@ const About = () => {
             <h2 style={{ color: "#FFD93D", marginBottom: "15px" }}>
               💖 Why Choose Us?
             </h2>
-            <p style={{ color: "#d4d4d4", lineHeight: "1.6" }}>
+            <p style={{ color: "var(--text-secondary)", lineHeight: "1.6" }}>
               ✔ Premium Quality Products
               <br />
               ✔ Secure Online Payments
@@ -133,7 +131,7 @@ const About = () => {
             background: "linear-gradient(45deg, #FFD93D, #FF3CAC)",
             padding: "35px",
             borderRadius: "20px",
-            color: "#111",
+            color: "var(--text-primary)",
           }}
         >
           <h2 style={{ marginBottom: "15px", fontSize: "30px" }}>

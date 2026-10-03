@@ -4,18 +4,16 @@ const ReturnPolicy = () => {
   return (
     <div
       style={{
-        backgroundColor: "#09090b",
         minHeight: "100vh",
         padding: "60px 20px",
-        fontFamily: "Arial, sans-serif",
-        color: "#ffffff",
+        fontFamily: "'Poppins', sans-serif",
       }}
     >
       <div
         style={{
           maxWidth: "1000px",
           margin: "0 auto",
-          backgroundColor: "#18181b",
+          backgroundColor: "var(--glass-bg)",
           borderRadius: "15px",
           padding: "40px",
           border: "1px solid rgba(255,255,255,0.08)",
@@ -44,7 +42,7 @@ const ReturnPolicy = () => {
         <p
           style={{
             textAlign: "center",
-            color: "#cbd5e1",
+            color: "var(--text-secondary)",
             fontSize: "17px",
             lineHeight: "1.8",
             marginBottom: "40px",
@@ -63,7 +61,7 @@ const ReturnPolicy = () => {
             📦 Return Eligibility
           </h2>
 
-          <p style={{ color: "#d1d5db", lineHeight: "1.8" }}>
+          <p style={{ color: "var(--text-secondary)", lineHeight: "1.8" }}>
             Products can be returned within <strong>7 days</strong> of
             delivery. The item must be unused, undamaged, and returned in its
             original packaging with all accessories, tags, and invoices.
@@ -77,7 +75,7 @@ const ReturnPolicy = () => {
 
           <ul
             style={{
-              color: "#d1d5db",
+              color: "var(--text-secondary)",
               lineHeight: "2",
               paddingLeft: "20px",
             }}
@@ -94,7 +92,7 @@ const ReturnPolicy = () => {
             💰 Refund Process
           </h2>
 
-          <p style={{ color: "#d1d5db", lineHeight: "1.8" }}>
+          <p style={{ color: "var(--text-secondary)", lineHeight: "1.8" }}>
             After we receive and inspect your returned product, your refund will
             be processed within <strong>5–7 business days</strong>. The refund
             will be credited to your original payment method.
@@ -106,7 +104,7 @@ const ReturnPolicy = () => {
             🔄 Exchange Policy
           </h2>
 
-          <p style={{ color: "#d1d5db", lineHeight: "1.8" }}>
+          <p style={{ color: "var(--text-secondary)", lineHeight: "1.8" }}>
             If you receive a damaged, defective, or incorrect product, you may
             request a replacement within <strong>48 hours</strong> of delivery
             by contacting our customer support team.
@@ -118,7 +116,7 @@ const ReturnPolicy = () => {
             🚚 Return Shipping
           </h2>
 
-          <p style={{ color: "#d1d5db", lineHeight: "1.8" }}>
+          <p style={{ color: "var(--text-secondary)", lineHeight: "1.8" }}>
             If the return is due to our error (wrong or damaged product),
             NamoCart will bear the shipping cost. For all other returns, return
             shipping charges may apply.
@@ -130,7 +128,7 @@ const ReturnPolicy = () => {
             📞 Need Help?
           </h2>
 
-          <p style={{ color: "#d1d5db", lineHeight: "1.8" }}>
+          <p style={{ color: "var(--text-secondary)", lineHeight: "1.8" }}>
             For return or refund assistance, please contact our customer support
             team with your Order ID. We'll be happy to help resolve your issue
             as quickly as possible.
@@ -145,7 +143,7 @@ const ReturnPolicy = () => {
             borderRadius: "12px",
             background: "linear-gradient(45deg, #FFD93D, #FF3CAC)",
             textAlign: "center",
-            color: "#111827",
+            color: "var(--text-primary)",
           }}
         >
           <h3 style={{ marginBottom: "10px" }}>
